@@ -6,7 +6,7 @@ const Header = () => {
     const { appData } = useContext(AppContext)
     return (
         <>
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <nav className="header navbar navbar-expand-lg navbar-light bg-white fixed-top">
                 <div className="container">
                     <Link className="navbar-brand" to="/">PCRM Web</Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

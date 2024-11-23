@@ -60,10 +60,9 @@ const Signup = () => {
         }
     }
 
-
     return (
         <div className="container-fluid bg-back">
-            <div className="row justify-content-center align-items-center h-90vh">
+            <div className="row justify-content-center align-items-center h-90vh main">
                 <div className="col-xxl-6 col-xl-6 col-lg-8 col-md-9 col-sm-11">
                     <form className="shadow my-5 gp-5 bg-white rounded-lg" onSubmit={(e) => signUpHandler(e)}>
                         <h2 className="text-center fw-bolder mb-2">PCRM</h2>

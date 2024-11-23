@@ -47,8 +47,8 @@ const Signin = () => {
 
   return (
     <>
-      <div className="container-fluid bg-back">
-        <div className="row justify-content-center align-items-center h-90vh">
+      <div className="container-fluid bg-back ">
+        <div className="row justify-content-center align-items-center h-90vh main">
           <div className="col-xxl-4 col-xl-5 col-lg-6 col-md-7 col-sm-8">
             <form className="shadow gp-5 bg-white rounded-lg" onSubmit={(e) => signInHandler(e)}>
               <h2 className="text-center fw-bolder mb-2">PCRM</h2>

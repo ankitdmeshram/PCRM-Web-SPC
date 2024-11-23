@@ -6,7 +6,8 @@ export const AppContext = createContext()
 const AppProvider = ({ children }) => {
     const [appData, setAppData] = useState({
         isLoggedIn: false,
-        user: {}
+        user: {},
+        sidebarOpen: false
     })
 
     const contextValue = {
@@ -23,10 +24,22 @@ const AppProvider = ({ children }) => {
             if (await getCookie('ud')) {
                 console.log(await getCookie('udd'))
                 let userData = await getCookie('udd')
-                setAppData({ isLoggedIn: true, user: JSON.parse(userData) })
+                setAppData(prev => {
+                    return {
+                        ...prev,
+                        isLoggedIn: true,
+                        user: JSON.parse(userData)
+                    }
+                })
             }
             else {
-                setAppData({ isLoggedIn: false })
+                setAppData(prev => {
+                    return {
+                        ...prev,
+                        isLoggedIn: false,
+                        user: {}
+                    }
+                })
             }
         } catch (error) {
             console.log(error)
