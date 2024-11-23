@@ -1,9 +1,7 @@
 
-import { domainName, setCookie } from "../Utils/common";
-
+import { domainName, getCookie, setCookie } from "../Utils/common";
 
 export const signIn = async (userData) => {
-
     try {
         const response = await fetch(`${domainName()}/api/auth/login`, {
             method: 'POST',
@@ -28,6 +26,43 @@ export const signIn = async (userData) => {
         }
     } catch (error) {
         console.error('Error:', error);
+        return false
+    }
+}
+
+export const signUp = async (userData) => {
+    try {
+        const response = await fetch(`${domainName()}/api/auth/register`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(userData),
+        });
+        const data = await response.json();
+        console.log("data", data)
+        if (data) {
+            if (data.success) {
+                setCookie("ud", data.token, 30)
+                setCookie("udd", JSON.stringify(data.user), 30)
+                return data
+            }
+            alert(data.message);
+            return false
+        } else {
+            alert(data.message);
+            return false
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        return false
+    }
+}
+
+export const isLoggedIn = async () => {
+    if (await getCookie("ud")) {
+        return true
+    } else {
         return false
     }
 }

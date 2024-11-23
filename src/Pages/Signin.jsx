@@ -2,7 +2,6 @@ import React, { useState, useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { validateEmail } from '../Utils/common'
 import { signIn } from '../Actions/Functions'
-
 import { AppContext } from '../Context/AppContext'
 
 const Signin = () => {
@@ -18,19 +17,17 @@ const Signin = () => {
 
   const signInHandler = async (e) => {
     try {
-      console.log(e)
       e.preventDefault();
       if (!userData.email || !userData.password) {
-        console.log("All fields are required")
+        alert("All fields are required")
         return;
       }
       if (!validateEmail(userData.email)) {
-        console.log("Invalid email address")
+        alert("Invalid email address")
         return;
       }
 
       const response = await signIn(userData)
-      console.log(response)
 
       if (response) {
         navigate("/dashboard")
@@ -44,8 +41,7 @@ const Signin = () => {
         })
       }
     } catch (error) {
-      console.log(error);
-      console.log(error.message)
+      alert(error.message)
     }
   }
 
@@ -100,7 +96,7 @@ const Signin = () => {
                 Sign in
               </button>
               <p className="text-center mt-4">
-                Don't have an account? <Link to={"/register"}>Register Now</Link>
+                Don't have an account? <Link to={"/signup"}>Register Now</Link>
               </p>
             </form>
           </div>
