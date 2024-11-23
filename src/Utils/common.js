@@ -1,6 +1,6 @@
 export const domainName = () => {
     console.log(window.location.hostname);
-    return window.location.hostname === 'localhost' ? 'http://localhost:5000' : 'https://pcrm-backend.brokod.com';
+    return window.location.hostname === 'localhost' ? 'http://localhost:5000' : 'https://pcrm-back.brokod.com';
 }
 
 export const validateEmail = (email) => {
