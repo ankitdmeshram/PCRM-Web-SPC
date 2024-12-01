@@ -7,7 +7,13 @@ import "./Styles/styles.css"
 import Signup from './Pages/Signup.jsx';
 import AppContext from './Context/AppContext.jsx';
 import TermsAndConditions from './Pages/TermsAndConditions.jsx';
-import Dashboard from './Pages/Dashboard.jsx';
+import Dashboard from './Pages/Dashboard/Dashboard.jsx';
+import DashboardHome from './Pages/Dashboard/Home.jsx';
+import Projects from './Pages/Dashboard/Projects.jsx';
+import MyAccount from './Pages/Dashboard/MyAccount.jsx';
+import AddProject from './Pages/Dashboard/AddProject.jsx';
+import UpdateProject from './Pages/Dashboard/UpdateProject.jsx';
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -29,11 +35,32 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard",
-        element: <Dashboard />
+        element: <Dashboard />,
+        children: [
+          {
+            path: "",
+            element: <DashboardHome />
+          },
+          {
+            path: "projects",
+            element: <Projects />  
+          },
+          {
+            path: "add-project",
+            element: <AddProject />  
+          },
+          {
+            path: "update-project",
+            element: <UpdateProject />  
+          },
+          {
+            path: "my-account",
+            element: <MyAccount />  
+          }
+        ]
       }
     ]
-  }
-]);
+  }]);
 
 createRoot(document.getElementById("root")).render(
   <AppContext>

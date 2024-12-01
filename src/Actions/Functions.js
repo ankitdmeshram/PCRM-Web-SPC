@@ -1,15 +1,12 @@
 
-import { domainName, getCookie, setCookie } from "../Utils/common";
+import { domainName, getCookie, postAPI, setCookie } from "../Utils/common";
+
+//  Auth Functions Start
 
 export const signIn = async (userData) => {
     try {
-        const response = await fetch(`${domainName()}/api/auth/login`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(userData),
-        });
+        const response = await postAPI(`${domainName()}/api/auth/login`, userData);
+
         const data = await response.json();
         console.log("data", data)
         if (data) {
@@ -32,13 +29,7 @@ export const signIn = async (userData) => {
 
 export const signUp = async (userData) => {
     try {
-        const response = await fetch(`${domainName()}/api/auth/register`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(userData),
-        });
+        const response = await postAPI(`${domainName()}/api/auth/register`, userData);
         const data = await response.json();
         console.log("data", data)
         if (data) {
@@ -66,3 +57,99 @@ export const isLoggedIn = async () => {
         return false
     }
 }
+
+
+//  Auth Functions End
+
+//  Project Functions Start
+
+export const addProject = async (projectData) => {
+    try {
+        const response = await postAPI(`${domainName()}/api/project/create-project`, projectData);
+        const data = await response.json();
+        console.log("data", data)
+        if (data) {
+            if (data.success) {
+                return data
+            }
+            alert(data.message);
+            return false
+        } else {
+            alert(data.message);
+            return false
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        return false
+    }
+}
+
+export const allProject = async () => {
+    try {
+        const response = await fetch(`${domainName()}/api/project/all-project`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'x-auth-token': await getCookie('ud'),
+            },
+        });
+        return response.json()
+    } catch (error) {
+        alert("Failed to connect to the server. Please try again later.");
+        return error
+    }
+}
+
+export const deleteProject = async (_id) => {
+    try {
+        const response = await postAPI(`${domainName()}/api/project/delete-project`, { _id });
+        const data = await response.json();
+        console.log("data", data)
+        if (data) {
+            if (data.success) {
+                return data
+            }
+            alert(data.message);
+            return false
+        } else {
+            alert(data.message);
+            return false
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        return false
+    }
+}
+
+export const updateProject = async (projectData) => {
+    try {
+        const response = await postAPI(`${domainName()}/api/project/update-project`, projectData);
+        const data = await response.json();
+        console.log("data", data)
+        if (data) {
+            if (data.success) {
+                return data
+            }
+            alert(data.message);
+            return false
+        } else {
+            alert(data.message);
+            return false
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        return false
+    }
+}
+
+export const viewProject = async (_id) => {
+    try {
+        const response = await postAPI(`${domainName()}/api/project/view-project`, { _id });
+        return response.json()
+    } catch (error) {
+        alert("Failed to connect to the server. Please try again later.");
+        return error
+    }
+}
+
+// Project Functions End

@@ -33,3 +33,20 @@ export const getCookie = async (name) => {
 export const deleteCookie = (name) => {
     document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 };
+
+export const postAPI = async (url, data) => {
+    try {
+        const response = await fetch(`${url}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'x-auth-token': await getCookie('ud'),
+            },
+            body: JSON.stringify(data),
+        });
+        return response
+    } catch (error) {
+        alert("Failed to connect to the server. Please try again later.");
+        return error
+    }
+}
