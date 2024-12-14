@@ -7,7 +7,6 @@ import moment from 'moment'
 const Projects = () => {
 
     const { appData, setAppData } = useContext(AppContext)
-    // const project = appData?.projects
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -19,7 +18,6 @@ const Projects = () => {
                 sidebarOpen: false
             }
         })
-
     }, [])
 
     const fetchAllProject = async () => {
@@ -34,12 +32,10 @@ const Projects = () => {
     }
 
     const handleDeleteProject = async (project) => {
-
-        let confirm = window.confirm("Are you sure you want to delete this project?")
+        let confirm = window.confirm(`Are you sure you want to delete this project - "${project?.projectName}"?`)
         if (!confirm) {
             return
         }
-
         const response = await deleteProject(project._id)
         if (response.success) {
             alert("Project Deleted Successfully")
@@ -53,7 +49,6 @@ const Projects = () => {
             })
         }
     }
-
     return (
         <>
             <button className='btn btn-black mb-2' onClick={() => navigate("../add-project")}>New Project</button>
@@ -72,15 +67,15 @@ const Projects = () => {
 
                 {
                     appData?.projects && appData?.projects.length > 0 && appData?.projects.map((project, i) => {
-                        return <div className="table-row">
+                        return <div className="table-row" key={i}>
                             <div className="table-col table-index">{i + 1}</div>
                             <div className="table-col table-title pointer-cursor" onClick={() => navigate(`/project/${project?._id}/tasks`)}>{project.projectName}</div>
                             <div className="col table-col table-date">{project.status}</div>
-                            <div className="col table-col table-date">{moment(project.startDate).format('YYYY-MM-DD')}</div>
-                            <div className="col table-col table-date">{moment(project.dueDate).format('YYYY-MM-DD')}</div>
-                            <div className="col table-col table-date">{moment(project.endDate).format('YYYY-MM-DD')}</div>
-                            <div className="col table-col table-date">{moment(project.updatedAt).format('YYYY-MM-DD')}</div>
-                            <div className="col table-col table-date">{moment(project.createdAt).format('YYYY-MM-DD')}</div>
+                            <div className="col table-col table-date">{project.startDate && moment(project.startDate).format('YYYY-MM-DD')}</div>
+                            <div className="col table-col table-date">{project.dueDate && moment(project.dueDate).format('YYYY-MM-DD')}</div>
+                            <div className="col table-col table-date">{project.endDate && moment(project.endDate).format('YYYY-MM-DD')}</div>
+                            <div className="col table-col table-date">{project.updatedAt && moment(project.updatedAt).format('YYYY-MM-DD')}</div>
+                            <div className="col table-col table-date">{project.createdAt && moment(project.createdAt).format('YYYY-MM-DD')}</div>
                             <div className="col table-action">
                                 <button className="col btn btn-black me-1" onClick={() => navigate(`../update-project#${project?._id}`)}>Update</button><button className="col btn btn-danger" onClick={() => handleDeleteProject(project)}>Delete</button>
                             </div>

@@ -2,10 +2,12 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Editor } from 'primereact/editor';
 import { addProject } from '../../Actions/Functions';
 import { AppContext } from '../../Context/AppContext';
+import { useNavigate } from 'react-router-dom';
 
 const AddProject = () => {
 
     const { setAppData } = useContext(AppContext)
+    const navigate = useNavigate()
 
     const [newProject, setNewProject] = useState({
         projectName: '',
@@ -27,6 +29,7 @@ const AddProject = () => {
             const response = await addProject(newProject)
             if(response.success) {
                 alert("Project Added Successfully")
+                navigate(`../update-project#${response.project._id}`)
             }
 
         } catch (error) {
@@ -104,22 +107,6 @@ const AddProject = () => {
                         </select>
                     </div>
                 </div>
-                {/* <div className="row">
-                                    <div className="form-group mt-3">
-                                        <label htmlFor="tags">Tags</label>
-                                        <select name="tags" className="form-control mt-1" id="">
-                                            <option value="Internal">Internal</option>
-                                            <option value="External">External</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div className="row">
-                                    <div className="form-group mt-3">
-                                        <label htmlFor="tags">Member</label>
-                                        <input type="text" className="form-control mt-1" id="projectName" aria-describedby="emailHelp" placeholder="Enter Member Name" />
-
-                                    </div>
-                                </div> */}
                 <div className="row">
                     <div className="form-group mt-3">
                         <button className='btn btn-black' onClick={() => handleAddProject()}>Add Project</button>
