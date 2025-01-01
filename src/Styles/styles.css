@@ -11,6 +11,11 @@
     min-height: 90vh;
 }
 
+.w-200px {
+    width: 200px;
+    word-break: break-all;
+}
+
 .bg-back {
     background: linear-gradient(90deg,
             rgba(237, 221, 34, 0.6223739495798319) 0%,
@@ -89,6 +94,7 @@
 
 .table-title {
     width: 300px;
+    word-wrap: break-word;
 }
 
 .table-row .table-col {

@@ -13,6 +13,9 @@ import Projects from './Pages/Dashboard/Projects.jsx';
 import MyAccount from './Pages/Dashboard/MyAccount.jsx';
 import AddProject from './Pages/Dashboard/AddProject.jsx';
 import UpdateProject from './Pages/Dashboard/UpdateProject.jsx';
+import Tasks from './Pages/Dashboard/Tasks.jsx';
+import AddTask from './Pages/Dashboard/AddTask.jsx';
+import UpdateTask from './Pages/Dashboard/UpdateTask.jsx';
 
 const router = createBrowserRouter([
   {
@@ -43,19 +46,31 @@ const router = createBrowserRouter([
           },
           {
             path: "projects",
-            element: <Projects />  
+            element: <Projects />
           },
           {
             path: "add-project",
-            element: <AddProject />  
+            element: <AddProject />
           },
           {
             path: "update-project",
-            element: <UpdateProject />  
+            element: <UpdateProject />
+          },
+          {
+            path: "tasks/:projectId",
+            element: <Tasks />
+          },
+          {
+            path: "tasks/:projectId/add-task",
+            element: <AddTask />
+          },
+          {
+            path: "update-task",
+            element: <UpdateTask />
           },
           {
             path: "my-account",
-            element: <MyAccount />  
+            element: <MyAccount />
           }
         ]
       }

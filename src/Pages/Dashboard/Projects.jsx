@@ -3,6 +3,9 @@ import { AppContext } from '../../Context/AppContext'
 import { useNavigate } from 'react-router-dom'
 import { allProject, deleteProject } from '../../Actions/Functions'
 import moment from 'moment'
+import { DataTable } from 'primereact/datatable';
+import { Column } from 'primereact/column';
+import 'primereact/resources/themes/lara-light-indigo/theme.css';
 
 const Projects = () => {
 
@@ -26,7 +29,12 @@ const Projects = () => {
         setAppData(prev => {
             return {
                 ...prev,
-                projects: response?.projects
+                projects: response?.projects.map((project, i) => {
+                    return {
+                        ...project,
+                        id: i + 1
+                    }
+                })
             }
         })
     }
@@ -52,6 +60,7 @@ const Projects = () => {
     return (
         <>
             <button className='btn btn-black mb-2' onClick={() => navigate("../add-project")}>New Project</button>
+
             <div className=" table-main">
                 <div className="table-row thead">
                     <div className="table-col table-index">Sr. No.</div>
@@ -69,7 +78,7 @@ const Projects = () => {
                     appData?.projects && appData?.projects.length > 0 && appData?.projects.map((project, i) => {
                         return <div className="table-row" key={i}>
                             <div className="table-col table-index">{i + 1}</div>
-                            <div className="table-col table-title pointer-cursor" onClick={() => navigate(`/project/${project?._id}/tasks`)}>{project.projectName}</div>
+                            <div className="table-col table-title pointer-cursor" onClick={() => navigate(`../tasks/${project?._id}`)}>{project.projectName}</div>
                             <div className="col table-col table-date">{project.status}</div>
                             <div className="col table-col table-date">{project.startDate && moment(project.startDate).format('YYYY-MM-DD')}</div>
                             <div className="col table-col table-date">{project.dueDate && moment(project.dueDate).format('YYYY-MM-DD')}</div>
