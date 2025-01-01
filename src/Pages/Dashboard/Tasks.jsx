@@ -62,7 +62,7 @@ const Tasks = () => {
             <button className='btn btn-black mb-2' onClick={() => navigate(`./add-task`)}>New Task</button>
             <div className=" table-main">
                 <div className="table-row thead">
-                    <div className="table-col table-index">Sr. No.</div>
+                    <div className="table-col table-index">ID</div>
                     <div className="table-col table-title">Tasks Name</div>
                     <div className="col table-col table-date">Status</div>
                     <div className="col table-col table-date">Start Date</div>
@@ -75,7 +75,7 @@ const Tasks = () => {
                 {
                     appData?.tasks && appData?.tasks.length > 0 && appData?.tasks.map((task, i) => {
                         return <div className="table-row" key={i}>
-                            <div className="table-col table-index">{i + 1}</div>
+                            <div className="table-col table-index">{task.taskId}</div>
                             <div className="table-col table-title pointer-cursor" onClick={() => navigate(`../update-task#${task?._id}`)}>{task.taskName}</div>
                             <div className="col table-col table-date">{task.status}</div>
                             <div className="col table-col table-date">{task.startDate && moment(task.startDate).format('YYYY-MM-DD')}</div>

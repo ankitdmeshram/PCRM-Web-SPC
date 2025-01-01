@@ -27,7 +27,7 @@ const UpdateTask = () => {
     const handleUpdateTask = async () => {
         try {
 
-            if (!taskData.taskName) {
+            if (!taskData?.taskName) {
                 alert("Task Name is required")
                 return
             }
@@ -88,7 +88,7 @@ const UpdateTask = () => {
                                     taskName: e.target.value
                                 }
                             })}
-                            value={taskData.taskName}
+                            value={taskData?.taskName}
                             className="form-control mt-1" id="taskName" aria-describedby="emailHelp" placeholder="Enter Task Name" />
                     </div>
                 </div>
@@ -102,7 +102,7 @@ const UpdateTask = () => {
                                     description: e.htmlValue
                                 }
                             })}
-                            value={taskData.description}
+                            value={taskData?.description}
                             style={{ height: '240px' }} />
                     </div>
                 </div>
@@ -116,7 +116,7 @@ const UpdateTask = () => {
                                     startDate: e.target.value
                                 }
                             })}
-                            value={moment(taskData.startDate).format('YYYY-MM-DD')}
+                            value={moment(taskData?.startDate).format('YYYY-MM-DD')}
                             className="form-control mt-1" id="projectName" aria-describedby="emailHelp" placeholder="Enter Project Name" />
                     </div>
                     <div className="form-group mt-3 col-sm-6 col-12">
@@ -128,7 +128,7 @@ const UpdateTask = () => {
                                     endDate: e.target.value
                                 }
                             })}
-                            value={moment(taskData.endDate).format('YYYY-MM-DD')}
+                            value={moment(taskData?.endDate).format('YYYY-MM-DD')}
                             className="form-control mt-1" id="projectName" aria-describedby="emailHelp" placeholder="Enter Project Name" />
                     </div>
                 </div>
@@ -142,7 +142,7 @@ const UpdateTask = () => {
                                     dueDate: e.target.value
                                 }
                             })}
-                            value={moment(taskData.dueDate).format('YYYY-MM-DD')}
+                            value={moment(taskData?.dueDate).format('YYYY-MM-DD')}
                             className="form-control mt-1" id="projectName" aria-describedby="emailHelp" placeholder="Enter Project Name" />
                     </div>
                     <div className="form-group mt-3 col-sm-6 col-12">
@@ -154,7 +154,7 @@ const UpdateTask = () => {
                                     status: e.target.value
                                 }
                             })}
-                            value={taskData.status}
+                            value={taskData?.status}
                         >
                             <option value="">Select Project Status</option>
                             <option value="Not Started">Not Started</option>

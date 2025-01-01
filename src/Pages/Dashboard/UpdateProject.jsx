@@ -45,7 +45,7 @@ const UpdateProject = () => {
     const handleUpdateProject = async () => {
         try {
 
-            if (!projectData.projectName) {
+            if (!projectData?.projectName) {
                 alert("All fields are required")
                 return
             }
@@ -92,14 +92,14 @@ const UpdateProject = () => {
                     <div className="form-group mt-3 col-sm-6 col-12">
                         <label htmlFor="projectName">Start Date</label>
                         <input type="date"
-                            value={moment(projectData.startDate).format('YYYY-MM-DD')}
+                            value={moment(projectData?.startDate).format('YYYY-MM-DD')}
                             onChange={(e) => setProjectData({ ...projectData, startDate: e.target.value })}
                             className="form-control mt-1" id="projectName" aria-describedby="emailHelp" placeholder="Enter Project Name" />
                     </div>
                     <div className="form-group mt-3 col-sm-6 col-12">
                         <label htmlFor="projectName">End Date</label>
                         <input type="date"
-                            value={moment(projectData.endDate).format('YYYY-MM-DD')}
+                            value={moment(projectData?.endDate).format('YYYY-MM-DD')}
                             onChange={(e) => setProjectData({ ...projectData, endDate: e.target.value })}
                             className="form-control mt-1" id="projectName" aria-describedby="emailHelp" placeholder="Enter Project Name" />
                     </div>
@@ -108,7 +108,7 @@ const UpdateProject = () => {
                     <div className="form-group mt-3 col-sm-6 col-12">
                         <label htmlFor="projectName">Due Date</label>
                         <input type="date"
-                            value={moment(projectData.dueDate).format('YYYY-MM-DD')}
+                            value={moment(projectData?.dueDate).format('YYYY-MM-DD')}
                             onChange={(e) => setProjectData({ ...projectData, dueDate: e.target.value })}
                             className="form-control mt-1" id="projectName" aria-describedby="emailHelp" placeholder="Enter Project Name" />
                     </div>

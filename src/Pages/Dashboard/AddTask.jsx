@@ -34,7 +34,7 @@ const AddTask = () => {
             const response = await addTask(newTask)
             if (response.success) {
                 alert("Task Added Successfully")
-                navigate(`../update-task#${response.task?._id}`)
+                navigate(`../tasks/${response.task?.projectId}`)
             }
 
         } catch (error) {
