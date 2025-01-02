@@ -100,7 +100,7 @@ const AddTask = () => {
                     </div>
                 </div>
                 <div className="row">
-                    <div className="form-group mt-3 col-sm-6 col-12">
+                    <div className="form-group mt-3 col-sm-4 col-12">
                         <label htmlFor="projectName">Start Date</label>
                         <input type="date"
                             onChange={(e) => setNewTask((prev) => {
@@ -111,7 +111,7 @@ const AddTask = () => {
                             })}
                             className="form-control mt-1" id="projectName" aria-describedby="emailHelp" placeholder="Enter Project Name" />
                     </div>
-                    <div className="form-group mt-3 col-sm-6 col-12">
+                    <div className="form-group mt-3 col-sm-4 col-12">
                         <label htmlFor="projectName">End Date</label>
                         <input type="date"
                             onChange={(e) => setNewTask((prev) => {
@@ -122,9 +122,7 @@ const AddTask = () => {
                             })}
                             className="form-control mt-1" id="projectName" aria-describedby="emailHelp" placeholder="Enter Project Name" />
                     </div>
-                </div>
-                <div className="row">
-                    <div className="form-group mt-3 col-sm-6 col-12">
+                    <div className="form-group mt-3 col-sm-4 col-12">
                         <label htmlFor="projectName">Due Date</label>
                         <input type="date"
                             onChange={(e) => setNewTask((prev) => {
@@ -150,6 +148,22 @@ const AddTask = () => {
                             <option value="In Progress">In Progress</option>
                             <option value="On Hold">On Hold</option>
                             <option value="Completed">Completed</option>
+                        </select>
+                    </div>
+                    <div className="form-group mt-3 col-sm-6 col-12">
+                        <label htmlFor="projectName">Project Priority</label>
+                        <select name="" id="" className="form-control mt-1"
+                            onChange={(e) => setNewTask((prev) => {
+                                return {
+                                    ...prev,
+                                    priority: e.target.value
+                                }
+                            })}
+                        >
+                            <option value="">Select Project Priority</option>
+                            <option value="Low">Low</option>
+                            <option value="Medium">Medium</option>
+                            <option value="High">High</option>
                         </select>
                     </div>
                 </div>

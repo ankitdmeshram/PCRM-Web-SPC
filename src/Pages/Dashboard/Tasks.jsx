@@ -65,6 +65,7 @@ const Tasks = () => {
                     <div className="table-col table-index">ID</div>
                     <div className="table-col table-title">Tasks Name</div>
                     <div className="col table-col table-date">Status</div>
+                    <div className="col table-col table-date">Priority</div>
                     <div className="col table-col table-date">Start Date</div>
                     <div className="col table-col table-date">Due Date</div>
                     <div className="col table-col table-date">End Date</div>
@@ -78,6 +79,7 @@ const Tasks = () => {
                             <div className="table-col table-index">{task.taskId}</div>
                             <div className="table-col table-title pointer-cursor" onClick={() => navigate(`../update-task#${task?._id}`)}>{task.taskName}</div>
                             <div className="col table-col table-date">{task.status}</div>
+                            <div className="col table-col table-date">{task.priority}</div>
                             <div className="col table-col table-date">{task.startDate && moment(task.startDate).format('YYYY-MM-DD')}</div>
                             <div className="col table-col table-date">{task.dueDate && moment(task.dueDate).format('YYYY-MM-DD')}</div>
                             <div className="col table-col table-date">{task.endDate && moment(task.endDate).format('YYYY-MM-DD')}</div>
