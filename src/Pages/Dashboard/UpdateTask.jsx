@@ -17,7 +17,7 @@ const UpdateTask = () => {
         startDate: "",
         endDate: "",
         dueDate: "",
-        status: "",
+        status: "Not Started",
         priority: "",
         tags: "",
         assignedBy: "",
@@ -154,7 +154,6 @@ const UpdateTask = () => {
                             })}
                             value={taskData?.status}
                         >
-                            <option value="">Select Project Status</option>
                             <option value="Not Started">Not Started</option>
                             <option value="In Progress">In Progress</option>
                             <option value="On Hold">On Hold</option>

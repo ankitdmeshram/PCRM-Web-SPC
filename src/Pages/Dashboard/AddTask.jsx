@@ -16,7 +16,7 @@ const AddTask = () => {
         startDate: "",
         endDate: "",
         dueDate: "",
-        status: "",
+        status: "Not Started",
         priority: "",
         tags: "",
         assignedBy: "",
@@ -142,8 +142,8 @@ const AddTask = () => {
                                     status: e.target.value
                                 }
                             })}
+                            value={newTask?.status}
                         >
-                            <option value="">Select Project Status</option>
                             <option value="Not Started">Not Started</option>
                             <option value="In Progress">In Progress</option>
                             <option value="On Hold">On Hold</option>
